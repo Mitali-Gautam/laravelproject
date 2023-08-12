@@ -24,7 +24,8 @@ class StudentSeeder extends Seeder
             "class"=>"Eight"
         ]);*/
 
-        $faker = \Faker\Factory::create();
+        //with faker
+        /*$faker = \Faker\Factory::create();
         DB::table('students')->insert([
             "name"=>$faker->name,
             "age"=>$faker->numberBetween($min = 2, $max = 18),
@@ -33,6 +34,6 @@ class StudentSeeder extends Seeder
             "phone"=>$faker->phoneNumber,
             "address"=>$faker->address,
             "class"=>$faker->text($maxNbChars = 100)
-        ]);
+        ]);*/
     }
 }
