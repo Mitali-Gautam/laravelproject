@@ -14,13 +14,13 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
         DB::table('students')->insert([
-            "name"=>"Mitali Gautam",
+            "name"=>"Mitali Nahata",
             "age"=>10,
             "gender"=>"Female",
-            "email"=>"abc@gmail.com",
+            "email"=>"mitali@gmail.com",
             "phone"=>"123456789",
-            "address"=>"Malad",
-            "class"=>"Fifth"
+            "address"=>"Malad East",
+            "class"=>"Eight"
         ]);
     }
 }
