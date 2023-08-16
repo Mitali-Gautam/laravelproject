@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name',100);
-            $table->tinyInteger('age');
             $table->enum('gender',['male','female']);
             $table->string('email',100);
             $table->string('phone',20);
