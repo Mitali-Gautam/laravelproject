@@ -23,7 +23,9 @@ class StudentFactory extends Factory
                 "email"=>$this->faker->safeEmail,
                 "phone"=>$this->faker->phoneNumber,
                 "address"=>$this->faker->address,
-                "class"=>$this->faker->text($maxNbChars = 10)
+                "class"=>$this->faker->text($maxNbChars = 10),
+                "created_at"=>$this->faker->dateTime(),
+                "updated_at"=>$this->faker->dateTime()
         ];
     }
 }
