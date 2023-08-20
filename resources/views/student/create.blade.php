@@ -10,7 +10,7 @@
         @endif
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Students</a></li>
+            <li class="breadcrumb-item"><a href="{{route('students')}}">Students</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Student</li>
           </ol>
         </nav>
@@ -43,7 +43,8 @@
                       <label class="col-sm-3 col-form-label">Gender</label>
                       <div class="col-sm-9">
                         <select name="gender" class="form-control">
-                            <option value="male" selected>Male</option>
+                            <option value="">Choose an option</option>
+                            <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                       </div>

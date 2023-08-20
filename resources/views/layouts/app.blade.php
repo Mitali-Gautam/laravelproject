@@ -43,9 +43,6 @@
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i> Messages</a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
               </div>
             </li>
@@ -91,19 +88,21 @@
             <li class="nav-item">
               <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
                 <span class="menu-title">Publishers</span>
-                <i class="icon-globe menu-icon"></i>
+                <i class="icon-printer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../pages/forms/basic_elements.html">
                 <span class="menu-title">Categories</span>
-                <i class="icon-book-open menu-icon"></i>
+                <i class="icon-menu menu-icon"></i>
+
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../pages/charts/chartist.html">
                 <span class="menu-title">Books</span>
-                <i class="icon-chart menu-icon"></i>
+                <i class="icon-book-open menu-icon"></i>
+
               </a>
             </li>
           </ul>
