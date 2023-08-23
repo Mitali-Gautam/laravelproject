@@ -10,6 +10,9 @@ use App\Http\Requests\UpdateStudentRequest;
 class StudentController extends Controller
 {
 
+    public function __construct(Student $student){
+        $this->student = $student;
+    }
 
     public function index(){
         $students = Student::all();
@@ -37,14 +40,14 @@ class StudentController extends Controller
     }
 
     public function edit($id){
-        $student = Student::find($id);
+        $student= $this->student->find($id);
         return view('student.edit',['student'=>$student]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
 
-        $student = Student::find($id);
+        $student= $this->student->find($id);
         $student->name = $request->name;
         $student->address = $request->address;
         $student->gender = $request->gender;
@@ -57,8 +60,13 @@ class StudentController extends Controller
     }
 
     public function delete($id){
-        Student::find($id)->delete();
+        $student= $this->student->find($id)->delete();
         session()->flash("success","Student Deleted Successfully ");
         return redirect()->route('students');
+    }
+
+    public function view($id){
+        $student= $this->student->find($id);
+        return view('student.view',['student'=>$student]);
     }
 }
