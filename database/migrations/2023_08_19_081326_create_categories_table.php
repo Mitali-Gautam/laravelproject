@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string("name",200);
-            $table->enum("is_deleted",[1,0])->default(0);
+            $table->string("name", 200);
+            $table->enum("is_deleted", [1,0])->default(0);
             $table->timestamp("created_at")->useCurrent();
             $table->timestamp("updated_at")->useCurrent();
         });

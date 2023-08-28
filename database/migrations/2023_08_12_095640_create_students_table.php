@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('students',  function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name',100);
-            $table->enum('gender',['male','female']);
-            $table->string('email',100);
-            $table->string('phone',20);
+            $table->string('name', 100);
+            $table->enum('gender', ['male', 'female']);
+            $table->string('email', 100);
+            $table->string('phone', 20);
             $table->text('address');
-            $table->string('class',100);
+            $table->string('class', 100);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

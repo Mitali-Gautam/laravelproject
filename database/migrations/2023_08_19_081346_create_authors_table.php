@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('authors', function (Blueprint $table) {
-            $table->string("name",200);
-            $table->enum("is_deleted",[1,0])->default(0);
+            $table->string("name", 200);
+            $table->enum("is_deleted", [1,0])->default(0);
             $table->timestamp("created_at")->useCurrent();
             $table->timestamp("updated_at")->useCurrent();
         });
