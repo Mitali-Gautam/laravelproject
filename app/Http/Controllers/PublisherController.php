@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publisher;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePublisherRequest;
 use App\Http\Requests\UpdatePublisherRequest;
+use App\Interfaces\PublisherRepositoryInterface;
 
 class PublisherController extends Controller
 {
 
-    public function __construct(Publisher $publisher){
-        $this->publisher = $publisher;
+    private PublisherRepositoryInterface $publisherRepository;
+
+    public function __construct(PublisherRepositoryInterface $publisherRepository){
+        $this->publisherRepository = $publisherRepository;
     }
 
     /**
@@ -19,7 +21,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = Publisher::where('is_deleted', '0')->get();
+        $publishers = $this->publisherRepository->getAllPublishers();
         return view('publisher.index',['publishers' => $publishers]);
     }
 
@@ -37,10 +39,12 @@ class PublisherController extends Controller
     //public function store(StorePublisherRequest $request)
     public function store(Request $request)
     {
-        $this->publisher->name = $request->name;
-        $this->publisher->save();
-        session()->flash("success","Publisher Created Successfully");
+        $data = array(
+            'name' => $request->name,
+        );
 
+        $this->publisherRepository->storePublisher($data);
+        session()->flash("success","Publisher Created Successfully");
         return redirect()->route('publishers');
     }
 
@@ -49,7 +53,7 @@ class PublisherController extends Controller
      */
     public function show($id)
     {
-        $publisher = $this->publisher->find($id);
+        $publisher =  $this->publisherRepository->getPublisherById($id);
         return view('publisher.view',['publisher'=>$publisher]);
     }
 
@@ -58,7 +62,7 @@ class PublisherController extends Controller
      */
     public function edit($id)
     {
-        $publisher = $this->publisher->find($id);
+        $publisher = $this->publisherRepository->getPublisherById($id);
         return view('publisher.edit',['publisher'=>$publisher]);
     }
 
@@ -68,9 +72,10 @@ class PublisherController extends Controller
     public function update(Request $request,$id)
     //public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
-        $publisher = $this->publisher->find($id);
-        $publisher->name = $request->name;
-        $publisher->save();
+        $data = array(
+            'name' => $request->name,
+        );
+        $this->publisherRepository->updatePublisher($id, $data);
 
         session()->flash("success","Publisher Updated Successfully");
         return redirect()->route("publishers");
@@ -81,10 +86,7 @@ class PublisherController extends Controller
      */
     public function delete($id)
     {
-        $publisher = $this->publisher->find($id);
-        $publisher->is_deleted = 1;
-        $publisher->save();
-
+        $this->publisherRepository->deletePublisher($id);
         session()->flash("success","Publisher Deleted Successfully");
         return redirect()->route("publishers");
     }
