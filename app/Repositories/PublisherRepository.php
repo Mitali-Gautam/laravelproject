@@ -11,7 +11,7 @@ class PublisherRepository implements PublisherRepositoryInterface{
     }
 
     public function getAllPublishers(){
-        return $this->publisher::where('is_deleted', '0')->get();
+        return $this->publisher->get(); //to get deleted data we can use withTrashed (eg : $this->publisher->withTrashed()->get())
     }
 
     public function getPublisherById($publisherId){
@@ -20,8 +20,7 @@ class PublisherRepository implements PublisherRepositoryInterface{
 
     public function deletePublisher($publisherId){
         $publisher = $this->publisher->find($publisherId);
-        $publisher->is_deleted = 1;
-        return $publisher->save();
+        return $publisher->delete();
     }
 
     public function storePublisher(array $publisherDetails){
