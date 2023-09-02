@@ -27,3 +27,13 @@ Route::get("/students/edit/{studentid}",[StudentController::class,'edit'])->name
 Route::post("/students/update/{id}",[StudentController::class,'update'])->name('students.update');
 Route::get("/students/delete/{id}",[StudentController::class,'delete'])->name('students.delete');
 Route::get("/students/view/{id}",[StudentController::class,'view'])->name('students.view');
+
+
+//Category CRUD
+Route::get("/categories",[PublisherController::class,'index'])->name("categories");
+Route::get("/categories/create",[PublisherController::class,'create'])->name('categories.create');
+Route::post("/categories/store",[PublisherController::class,'store'])->name("categories.store");
+Route::get("/categories/edit/{categoryId}",[PublisherController::class,'edit'])->name('categories.edit');
+Route::post("/categories/update/{id}",[PublisherController::class,'update'])->name('categories.update');
+Route::get("/categories/delete/{id}",[PublisherController::class,'delete'])->name('categories.delete');
+Route::get("/categories/view/{id}",[PublisherController::class,'view'])->name('categories.view');
