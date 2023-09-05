@@ -27,3 +27,13 @@ Route::get("/students/edit/{studentid}",[StudentController::class,'edit'])->name
 Route::post("/students/update/{id}",[StudentController::class,'update'])->name('students.update');
 Route::get("/students/delete/{id}",[StudentController::class,'delete'])->name('students.delete');
 Route::get("/students/view/{id}",[StudentController::class,'view'])->name('students.view');
+
+
+//Author CRUD
+Route::get("/authors",[AuthorController::class,'index'])->name("authors");
+Route::get("/authors/create",[AuthorController::class,'create'])->name('authors.create');
+Route::post("/authors/store",[AuthorController::class,'store'])->name("authors.store");
+Route::get("/authors/edit/{id}",[AuthorController::class,'edit'])->name('authors.edit');
+Route::post("/authors/update/{id}",[AuthorController::class,'update'])->name('authors.update');
+Route::get("/authors/delete/{id}",[AuthorController::class,'delete'])->name('authors.delete');
+Route::get("/authors/view/{id}",[AuthorController::class,'view'])->name('authors.view');
