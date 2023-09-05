@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,10 @@ Route::get("/students/view/{id}",[StudentController::class,'view'])->name('stude
 
 
 //Category CRUD
-Route::get("/categories",[PublisherController::class,'index'])->name("categories");
-Route::get("/categories/create",[PublisherController::class,'create'])->name('categories.create');
-Route::post("/categories/store",[PublisherController::class,'store'])->name("categories.store");
-Route::get("/categories/edit/{categoryId}",[PublisherController::class,'edit'])->name('categories.edit');
-Route::post("/categories/update/{id}",[PublisherController::class,'update'])->name('categories.update');
-Route::get("/categories/delete/{id}",[PublisherController::class,'delete'])->name('categories.delete');
-Route::get("/categories/view/{id}",[PublisherController::class,'view'])->name('categories.view');
+Route::get("/categories",[CategoryController::class,'index'])->name("categories");
+Route::get("/categories/create",[CategoryController::class,'create'])->name('categories.create');
+Route::post("/categories/store",[CategoryController::class,'store'])->name("categories.store");
+Route::get("/categories/edit/{categoryId}",[CategoryController::class,'edit'])->name('categories.edit');
+Route::post("/categories/update/{id}",[CategoryController::class,'update'])->name('categories.update');
+Route::get("/categories/delete/{id}",[CategoryController::class,'delete'])->name('categories.delete');
+Route::get("/categories/view/{id}",[CategoryController::class,'view'])->name('categories.view');

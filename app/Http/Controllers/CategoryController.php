@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorecategoryRequest;
 use App\Http\Requests\UpdatecategoryRequest;
 use App\Interfaces\CategoryRepositoryInterface;
@@ -11,9 +11,11 @@ class CategoryController extends Controller
 {
     private CategoryRepositoryInterface $categoryRepository;
 
-    public function  __construct() {
+    public function __construct(CategoryRepositoryInterface $categoryRepository) {
         $this->categoryRepository = $categoryRepository;
     }
+
+
 
     /**
      * Display a listing of the resource.
@@ -38,7 +40,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = array(
-            'name' => $req->name,
+            'name' => $request->name,
         );
 
         $this->categoryRepository->storeCategory($data);
@@ -50,7 +52,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
         $category =  $this->categoryRepository->getCategoryById($id);
         return view('category.edit',['category'=>$category]);
@@ -62,7 +64,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = array(
-            'name' => $req->name,
+            'name' => $request->name,
         );
         $this->categoryRepository->updateCategory($id,$data);
         session()->flash("success","Category Updated Successfully ");
