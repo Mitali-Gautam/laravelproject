@@ -18,6 +18,7 @@ class AuthorFactory extends Factory
     {
         return [
             'name'=>$this->faker->name,
+            'deleted_at'=> null,
             'created_at'=>$this->faker->dateTime(),
             'updated_at'=>$this->faker->dateTime(),
         ];
