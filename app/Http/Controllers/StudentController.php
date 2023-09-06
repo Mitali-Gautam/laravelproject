@@ -2,65 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStudentsRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Interfaces\StudentRepositoryInterface;
 
 class StudentController extends Controller
 {
+    private StudentRepositoryInterface $studentRepository;
 
-    public function __construct(Student $student){
-        $this->student = $student;
+    public function __construct(StudentRepositoryInterface $studentRepository) {
+        $this->studentRepository = $studentRepository;
     }
 
-    public function index(){
-        $students = Student::all();
+    public function index() {
+        $students = $this->studentRepository->getAllStudents();
         return view('student.index',['students'=>$students]);
     }
 
-    public function create(){
+    public function create() {
         return view('student.create');
     }
 
-    public function store(Request $req){
+    public function store(Request $req) {
 
-        $student = new Student();
-        $student->name = $req->name;
-        $student->gender = $req->gender;
-        $student->class = $req->class;
-        $student->address = $req->address;
-        $student->phone = $req->phone;
-        $student->email = $req->email;
-        $student->save();
+        $data = array(
+            'name' => $req->name,
+            'gender' => $req->gender,
+            'class' => $req->class,
+            'address' => $req->address,
+            'phone' => $req->phone,
+            'email' => $req->email,
+        );
+
+        $this->studentRepository->storeStudent($data);
        // $req->validated();
         session()->flash("success","Student Created Successfully ");
-
         return redirect()->route('students.create');
     }
 
-    public function edit($id){
-        $student= $this->student->find($id);
+    public function edit($id) {
+        $student =  $this->studentRepository->getStudentById($id);
         return view('student.edit',['student'=>$student]);
     }
 
-    public function update(Request $request,$id)
-    {
-
-        $student= $this->student->find($id);
-        $student->name = $request->name;
-        $student->address = $request->address;
-        $student->gender = $request->gender;
-        $student->class = $request->class;
-        $student->phone = $request->phone;
-        $student->email = $request->email;
-        $student->save();
+    public function update(Request $req, $id) {
+        $data = array(
+            'name' => $req->name,
+            'gender' => $req->gender,
+            'class' => $req->class,
+            'address' => $req->address,
+            'phone' => $req->phone,
+            'email' => $req->email,
+        );
+        $this->studentRepository->updateStudent($id,$data);
         session()->flash("success","Student Updated Successfully ");
         return redirect()->route('students');
     }
 
-    public function delete($id){
-        $student= $this->student->find($id)->delete();
+    public function delete($id) {
+        $student = $this->studentRepository->deleteStudent($id);
         session()->flash("success","Student Deleted Successfully ");
         return redirect()->route('students');
     }
