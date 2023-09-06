@@ -53,7 +53,7 @@ class AuthorController extends Controller
     public function edit($id)
     {
         $author =  $this->authorRepository->getAuthorById($id);
-        return view('author.edit',['Author'=>$author]);
+        return view('author.edit',['author'=>$author]);
     }
 
     /**
