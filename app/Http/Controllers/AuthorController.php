@@ -53,7 +53,7 @@ class AuthorController extends Controller
     public function edit($id)
     {
         $author =  $this->authorRepository->getAuthorById($id);
-        return view('author.edit',['author'=>$author]);
+        return view('author.edit',['Author'=>$author]);
     }
 
     /**
@@ -65,7 +65,7 @@ class AuthorController extends Controller
             'name' => $request->name,
         );
         $this->authorRepository->updateAuthor($id,$data);
-        session()->flash("success","author Updated Successfully ");
+        session()->flash("success","Author Updated Successfully ");
         return redirect()->route('authors');
     }
 
@@ -75,7 +75,7 @@ class AuthorController extends Controller
     public function delete($id)
     {
         $author = $this->authorRepository->deleteAuthor($id);
-        session()->flash("success","author Deleted Successfully ");
+        session()->flash("success","Author Deleted Successfully ");
         return redirect()->route('authors');
     }
 }
