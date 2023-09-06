@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,14 @@ Route::post("/students/update/{id}",[StudentController::class,'update'])->name('
 Route::get("/students/delete/{id}",[StudentController::class,'delete'])->name('students.delete');
 Route::get("/students/view/{id}",[StudentController::class,'view'])->name('students.view');
 
+//Category CRUD
+Route::get("/categories",[CategoryController::class,'index'])->name("categories");
+Route::get("/categories/create",[CategoryController::class,'create'])->name('categories.create');
+Route::post("/categories/store",[CategoryController::class,'store'])->name("categories.store");
+Route::get("/categories/edit/{categoryId}",[CategoryController::class,'edit'])->name('categories.edit');
+Route::post("/categories/update/{id}",[CategoryController::class,'update'])->name('categories.update');
+Route::get("/categories/delete/{id}",[CategoryController::class,'delete'])->name('categories.delete');
+Route::get("/categories/view/{id}",[CategoryController::class,'view'])->name('categories.view');
 
 //Author CRUD
 Route::get("/authors",[AuthorController::class,'index'])->name("authors");
