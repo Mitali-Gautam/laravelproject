@@ -42,7 +42,7 @@ class AuthorController extends Controller
         );
 
         $this->authorRepository->storeAuthor($data);
-        session()->flash("success","author Created Successfully ");
+        session()->flash("success","Author Created Successfully ");
 
         return redirect()->route('authors.create');
     }
@@ -65,7 +65,7 @@ class AuthorController extends Controller
             'name' => $request->name,
         );
         $this->authorRepository->updateAuthor($id,$data);
-        session()->flash("success","author Updated Successfully ");
+        session()->flash("success","Author Updated Successfully ");
         return redirect()->route('authors');
     }
 
