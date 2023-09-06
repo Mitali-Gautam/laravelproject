@@ -49,3 +49,12 @@ Route::get("/categories/edit/{categoryId}",[CategoryController::class,'edit'])->
 Route::post("/categories/update/{id}",[CategoryController::class,'update'])->name('categories.update');
 Route::get("/categories/delete/{id}",[CategoryController::class,'delete'])->name('categories.delete');
 Route::get("/categories/view/{id}",[CategoryController::class,'view'])->name('categories.view');
+
+//Author CRUD
+Route::get("/authors",[AuthorController::class,'index'])->name("authors");
+Route::get("/authors/create",[AuthorController::class,'create'])->name('authors.create');
+Route::post("/authors/store",[AuthorController::class,'store'])->name("authors.store");
+Route::get("/authors/edit/{id}",[AuthorController::class,'edit'])->name('authors.edit');
+Route::post("/authors/update/{id}",[AuthorController::class,'update'])->name('authors.update');
+Route::get("/authors/delete/{id}",[AuthorController::class,'delete'])->name('authors.delete');
+Route::get("/authors/view/{id}",[AuthorController::class,'view'])->name('authors.view');
