@@ -42,7 +42,7 @@ class AuthorController extends Controller
         );
 
         $this->authorRepository->storeAuthor($data);
-        session()->flash("success","Author Created Successfully ");
+        session()->flash("success","author Created Successfully ");
 
         return redirect()->route('authors.create');
     }
@@ -65,7 +65,7 @@ class AuthorController extends Controller
             'name' => $request->name,
         );
         $this->authorRepository->updateAuthor($id,$data);
-        session()->flash("success","Author Updated Successfully ");
+        session()->flash("success","author Updated Successfully ");
         return redirect()->route('authors');
     }
 
@@ -75,7 +75,7 @@ class AuthorController extends Controller
     public function delete($id)
     {
         $author = $this->authorRepository->deleteAuthor($id);
-        session()->flash("success","Author Deleted Successfully ");
+        session()->flash("success","author Deleted Successfully ");
         return redirect()->route('authors');
     }
 }
