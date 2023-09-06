@@ -4,13 +4,13 @@
 <div class="main-panel">
     <div class="content-wrapper">
       <div class="page-header">
-        <h3 class="page-title"> Students List </h3>
+        <h3 class="page-title"> Publishers List </h3>
         @if (session()->has("success"))
             <p class="font-weight-bold text-success">{{session("success")}}</p>
         @endif
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li><a href="{{route('students.create')}}" class="btn btn-primary btn-icon-text"> Add Student <i class="icon-plus"></i></a></li>
+            <li><a href="{{route('publishers.create')}}" class="btn btn-primary btn-icon-text"> Add Publisher <i class="icon-plus"></i></a></li>
           </ol>
         </nav>
       </div>
@@ -22,25 +22,18 @@
                 <thead>
                   <tr>
                     <th> # </th>
-                    <th> Student Name </th>
-                    <th> Gender </th>
-                    <th> Email </th>
-                    <th> Phone </th>
-                    <th> Class </th>
+                    <th> Publisher Name </th>
+                    <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($students as $student)
+                    @foreach ($publishers as $publisher)
                     <tr>
-                        <td> {{$student->id}} </td>
-                        <td> {{$student->name}} </td>
-                        <td> {{ucfirst($student->gender)}} </td>
-                        <td> {{$student->email}} </td>
-                        <td> {{$student->phone}} </td>
-                        <td> {{$student->class}} </td>
-                        <td><a href="{{route('students.view',$student->id)}}" class="btn btn-success btn-icon-text btn-sm"> View <i class="icon-magnifier icon-sm"></i></a></td>
-                        <td><a href="{{route('students.edit',$student->id)}}" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
-                        <td><a href="{{route('students.delete',$student->id)}}" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
+                        <td> {{$publisher->id}} </td>
+                        <td> {{$publisher->name}} </td>
+                        <td><a href="{{route('publishers.edit',$publisher->id)}}" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
+                        <td><a href="{{route('publishers.delete',$publisher->id)}}" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

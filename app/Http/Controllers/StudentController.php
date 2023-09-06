@@ -65,4 +65,9 @@ class StudentController extends Controller
         session()->flash("success","Student Deleted Successfully ");
         return redirect()->route('students');
     }
+
+    public function view($id){
+        $student= $this->student->find($id);
+        return view('student.view',['student'=>$student]);
+    }
 }

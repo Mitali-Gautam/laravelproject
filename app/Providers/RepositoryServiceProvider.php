@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Interfaces\StudentRepositoryInterface;
 use App\Repositories\StudentRepository;
 
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**

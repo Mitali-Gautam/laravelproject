@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>Library Management System Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
@@ -31,16 +31,16 @@
           <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to dashboard!</h5>
           <ul class="navbar-nav navbar-nav-right ml-auto">
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="../../images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                <img class="img-xs rounded-circle ml-2" src="../../images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Mitali </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                  <p class="mb-1 mt-3">Mitali</p>
+                  <p class="font-weight-light text-muted mb-0"></p>
                 </div>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
@@ -60,11 +60,11 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="profile image">
+                  <img class="img-xs rounded-circle" src="" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
+                  <p class="profile-name">Mitali</p>
                   <p class="designation">Administrator</p>
                 </div>
                 <div class="icon-container">
@@ -80,26 +80,33 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" href="#">
                 <span class="menu-title">Authors</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
+              <a class="nav-link" href="{{route('publishers')}}">
                 <span class="menu-title">Publishers</span>
                 <i class="icon-printer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/forms/basic_elements.html">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Categories</span>
                 <i class="icon-menu menu-icon"></i>
 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/charts/chartist.html">
+                <a class="nav-link" href="{{route("students")}}">
+                  <span class="menu-title">Students</span>
+                  <i class="icon-people menu-icon"></i>
+
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Books</span>
                 <i class="icon-book-open menu-icon"></i>
 
