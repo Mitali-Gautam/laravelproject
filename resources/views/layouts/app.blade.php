@@ -80,7 +80,7 @@
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('authors')}}">
                 <span class="menu-title">Authors</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
@@ -92,7 +92,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('categories')}}">
                 <span class="menu-title">Categories</span>
                 <i class="icon-menu menu-icon"></i>
 
@@ -106,7 +106,7 @@
                 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('books')}}">
                 <span class="menu-title">Books</span>
                 <i class="icon-book-open menu-icon"></i>
 
