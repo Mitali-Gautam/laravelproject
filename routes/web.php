@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,13 @@ Route::get("/authors/edit/{id}",[AuthorController::class,'edit'])->name('authors
 Route::post("/authors/update/{id}",[AuthorController::class,'update'])->name('authors.update');
 Route::get("/authors/delete/{id}",[AuthorController::class,'delete'])->name('authors.delete');
 Route::get("/authors/view/{id}",[AuthorController::class,'view'])->name('authors.view');
+
+  // books CRUD
+
+  Route::get('/books', [BookController::class, 'index'])->name('books');
+  Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+  Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
+  Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
+  Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
+  Route::get('/book/delete/{id}', [BookController::class, 'delete'])->name('book.delete');
+  Route::get("/book/view/{id}",[BookController::class,'view'])->name('book.view');

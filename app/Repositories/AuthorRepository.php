@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\AuthorRepositoryInterface;
 use App\Models\Author;
+use App\Exceptions\AuthorException;
 
 class AuthorRepository implements AuthorRepositoryInterface {
 
@@ -16,20 +17,25 @@ class AuthorRepository implements AuthorRepositoryInterface {
     }
 
     public function getAuthorById($authorId) {
-        return $this->author->find($authorId);
+        $author =  $this->author->findorfail($authorId);
+        if(!$author){
+            throw new AuthorException();
+        }
+        return $author;
     }
 
     public function deleteAuthor($authorId) {
-        $author = $this->author->find($authorId);
+        $author = $this->getAuthorById($authorId);
         return $author->delete();
+
     }
 
     public function storeAuthor(array $authorDetails) {
-        $this->author->create($authorDetails);
+        return $this->author->create($authorDetails);
     }
 
     public function updateAuthor($authorId, array $authorDetails) {
-        $author = $this->author->find($authorId);
+        $author = $this->getAuthorById($authorId);
         $author->name = $authorDetails['name'];
         $author->save();
     }
