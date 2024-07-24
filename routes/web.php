@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,16 @@ use App\Http\Controllers\BookController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 //Students CRUD
@@ -69,3 +80,5 @@ Route::get("/authors/view/{id}",[AuthorController::class,'view'])->name('authors
   Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
   Route::get('/book/delete/{id}', [BookController::class, 'delete'])->name('book.delete');
   Route::get("/book/view/{id}",[BookController::class,'view'])->name('book.view');
+
+require __DIR__.'/auth.php';

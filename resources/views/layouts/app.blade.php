@@ -43,7 +43,12 @@
                   <p class="font-weight-light text-muted mb-0"></p>
                 </div>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <i class="dropdown-item-icon icon-power text-primary">
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                </form>
+
               </div>
             </li>
           </ul>
