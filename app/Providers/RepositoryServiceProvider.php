@@ -11,6 +11,8 @@ use App\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\CategoryRepository;
 use App\Interfaces\AuthorRepositoryInterface;
 use App\Repositories\AuthorRepository;
+use App\Interfaces\BookRepositoryInterface;
+use App\Repositories\BookRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PublisherRepositoryInterface::class, PublisherRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(AuthorRepositoryInterface::class, AuthorRepository::class);
+        $this->app->bind(BookRepositoryInterface::class,BookRepository::class);
     }
 
     /**

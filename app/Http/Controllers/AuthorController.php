@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
 use App\Interfaces\AuthorRepositoryInterface;
+use App\Exceptions\AuthorException;
+use Illuminate\Http\Response;
 
 class AuthorController extends Controller
 {
@@ -37,14 +39,18 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $data = array(
-            'name' => $request->name,
-        );
+        try{
+            $data = array(
+                'name' => $request->name,
+            );
 
-        $this->authorRepository->storeAuthor($data);
-        session()->flash("success","author Created Successfully ");
+            $this->authorRepository->storeAuthor($data);
+            session()->flash("success","author Created Successfully ");
+            return redirect()->route('authors.create');
 
-        return redirect()->route('authors.create');
+        }catch(AuthorException $e){
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -52,8 +58,13 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        $author =  $this->authorRepository->getAuthorById($id);
-        return view('author.edit',['author'=>$author]);
+        try{
+            $author =  $this->authorRepository->getAuthorById($id);
+            return view('author.edit',['author'=>$author]);
+        }catch (\Exception $e) {
+            abort(Response::HTTP_NOT_FOUND, 'The invitation token is invalid.');
+            //return view('errors.404', ['message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -61,12 +72,17 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = array(
-            'name' => $request->name,
-        );
-        $this->authorRepository->updateAuthor($id,$data);
-        session()->flash("success","Author Updated Successfully ");
-        return redirect()->route('authors');
+        try{
+            $data = array(
+                'name' => $request->name,
+            );
+            $this->authorRepository->updateAuthor($id,$data);
+            session()->flash("success","Author Updated Successfully ");
+            return redirect()->route('authors');
+
+        } catch (AuthorException $e) {
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -74,8 +90,23 @@ class AuthorController extends Controller
      */
     public function delete($id)
     {
-        $author = $this->authorRepository->deleteAuthor($id);
-        session()->flash("success","Author Deleted Successfully ");
-        return redirect()->route('authors');
+        try{
+            $author = $this->authorRepository->deleteAuthor($id);
+            session()->flash("success","Author Deleted Successfully ");
+            return redirect()->route('authors');
+        }catch (AuthorException $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
+
+    public function view($id)
+    {
+        $author =  $this->authorRepository->getAuthorById($id);
+        $book =  $author->book;
+        return view('author.view',$book);
+    }
+
+    //listing (List out paticular authors all books)
+    // 1 book = 1 author (harry tter 1 = jk rowling)
+    //1 author - many books (jk rowling = hp1,hp2 ...)
 }
